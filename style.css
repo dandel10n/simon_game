@@ -51,19 +51,46 @@ Style
 
 html,
 body {
-    text-align: center;
-    min-height: 100%;
-    height: 100%;
+  text-align: center;
+  min-height: 100%;
+  height: 100%;
 }
 
 *,
 *:before,
 *:after {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 * {
-    text-align: center;
+  text-align: center;
+}
+
+.gamefield {
+  width: 50%;
+  margin: auto;
+}
+
+.gameButton {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+#yellow {
+  border: 2px solid yellow;
+}
+
+#red {
+  border: 2px solid red;
+}
+
+#blue {
+  border: 2px solid blue;
+}
+
+#green {
+  border: 2px solid green;
 }
