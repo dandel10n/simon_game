@@ -94,3 +94,28 @@ body {
 #green {
   border: 2px solid green;
 }
+
+.button {
+  cursor: pointer;
+  margin: 10px auto;
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid black;
+}
+
+#green.active {
+  background-color: green;
+}
+
+#blue.active {
+  background-color: blue;
+}
+
+#red.active {
+  background-color: red;
+}
+
+#yellow.active {
+  background-color: yellow;
+}
