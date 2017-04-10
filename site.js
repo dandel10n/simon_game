@@ -3,6 +3,10 @@ $(document).ready(function(){
 
   $(".startButton").click(function() {
     game.generateMove();
+    computerMove();
+  });
+
+  function computerMove() {
     var moves = game.getCurrentCombination();
     var i = 0;
 
@@ -22,5 +26,6 @@ $(document).ready(function(){
       }
     }, 600);
 
-  });
+    game.clearPlayer();
+  }
 })
