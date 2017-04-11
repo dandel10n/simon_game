@@ -2,7 +2,7 @@ var SimonGame = function() {
   this.count = 1;
   this.buttons = ['green', 'blue', 'red', 'yellow'];
   this.currentCombination = [];
-  this.player = [];
+  this.playerMoves = [];
   this.sounds = {
     blue: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'),
     red: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'),
@@ -10,6 +10,7 @@ var SimonGame = function() {
     green: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3')
   };
   this.isStrict = false;
+  this.computerCallback = null;
 }
 
 SimonGame.prototype.getCurrentCombination = function() {
@@ -18,11 +19,12 @@ SimonGame.prototype.getCurrentCombination = function() {
 
 SimonGame.prototype.clearGame = function() {
   this.currentCombination = [];
+  this.clearPlayer();
   this.count = 0;
 }
 
 SimonGame.prototype.clearPlayer = function() {
-  this.player = [];
+  this.playerMoves = [];
 }
 
 SimonGame.prototype.addCount = function() {
@@ -50,13 +52,16 @@ SimonGame.prototype.sound = function(name) {
   };
 }
 
-
-SimonGame.prototype.strict = function() {
-  if (this.strict == false) {
-    this.strict = true;
+SimonGame.prototype.toggleStrict = function() {
+  if (this.isStrict == false) {
+    this.isStrict = true;
   } else {
-    game.strict = false;
+    this.isStrict = false;
   }
+}
+
+SimonGame.prototype.setComputerCallback = function(callback) {
+  this.computerCallback = callback;
 }
 
 SimonGame.prototype.generateMove = function() {
@@ -64,28 +69,31 @@ SimonGame.prototype.generateMove = function() {
   console.log(this.currentCombination);
 };
 
-SimonGame.prototype.addToPlayer = function(playerClick) {
-  this.player.push(playerClick);
-  this.playerTurn(playerClick);
-} 
-
-SimonGame.prototype.playerTurn = function(playerClicks) {
-  if (this.player[this.player.length - 1] !== this.currentGame[this.player.length - 1]) {
-    if(this.strict){
+SimonGame.prototype.playerTurn = function(playerClick) {
+  this.playerMoves.push(playerClick);
+  if (this.playerMoves[this.playerMoves.length - 1] !== this.currentCombination[this.playerMoves.length - 1]) {
+    if(this.isStrict){
       console.log('From the beginning');
       this.clearGame();
+      this.addCount();
+      this.generateMove();
+      this.computerCallback();
     } else {
       console.log('Try again');
-      computerMove();//?????
+      this.computerCallback();
+      this.clearPlayer();
     }
   } else {
-    sound(playerClicks);
-    if (this.player.length === this.currentGame.length) {
+    this.sound(playerClick);
+    if (this.playerMoves.length === this.currentCombination.length) {
       if(this.count == 20){
-        console.log('You won! Congrats.');
+        console.log('You won! Congrats!');
       } else {
         console.log('Next round!');
         this.addCount();
+        this.generateMove();
+        this.computerCallback();
+        this.clearPlayer();
       }
     }
   }

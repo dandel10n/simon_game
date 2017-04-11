@@ -3,10 +3,23 @@ $(document).ready(function(){
 
   $(".startButton").click(function() {
     game.generateMove();
-    computerMove();
+    playComputerCombination();
   });
 
-  function computerMove() {
+  $(".strictButton").click(function(){
+    game.toggleStrict();
+    console.log("is strict:", game.isStrict);
+  });
+
+  $(".resetButton").click(function(){
+    game.clearGame();
+  })
+
+  $(".gameButton").click(function(){
+    game.playerTurn($(this).data("color"));
+  });
+
+  function playComputerCombination() {
     var moves = game.getCurrentCombination();
     var i = 0;
 
@@ -24,8 +37,8 @@ $(document).ready(function(){
       if (i >= moves.length) {
         clearInterval(playingSound);
       }
-    }, 600);
-
-    game.clearPlayer();
+    }, 900);
   }
+
+  game.setComputerCallback(playComputerCombination);
 })
