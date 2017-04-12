@@ -1,21 +1,24 @@
 $(document).ready(function(){
   var game = new SimonGame();
 
-  $(".startButton").click(function() {
+  $(".startButton").on("click", function() {
     game.generateMove();
     playComputerCombination();
   });
 
-  $(".strictButton").click(function(){
+  $(".strictButton").on("click", function(){
     game.toggleStrict();
     console.log("is strict:", game.isStrict);
   });
 
-  $(".resetButton").click(function(){
+  $(".resetButton").on("click", function(){
     game.clearGame();
+    $(".scoreDisplay").text(game.count);
+    game.generateMove();
+    playComputerCombination();
   })
 
-  $(".gameButton").click(function(){
+  $(".gameButton").on("click", function(){
     game.playerTurn($(this).data("color"));
   });
 
