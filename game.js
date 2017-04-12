@@ -11,6 +11,7 @@ var SimonGame = function() {
   };
   this.isStrict = false;
   this.computerCallback = null;
+  this.playerCallback - null;
 }
 
 SimonGame.prototype.getCurrentCombination = function() {
@@ -64,6 +65,10 @@ SimonGame.prototype.setComputerCallback = function(callback) {
   this.computerCallback = callback;
 }
 
+SimonGame.prototype.setPlayerCallback = function(callback) {
+  this.playerCallback = callback;
+}
+
 SimonGame.prototype.generateMove = function() {
   this.currentCombination.push(this.buttons[(Math.floor(Math.random() * this.buttons.length))]);
   console.log(this.currentCombination);
@@ -85,6 +90,7 @@ SimonGame.prototype.playerTurn = function(playerClick) {
     }
   } else {
     this.sound(playerClick);
+    this.playerCallback(playerClick);
     if (this.playerMoves.length === this.currentCombination.length) {
       if(this.count == 20){
         console.log('You won! Congrats!');

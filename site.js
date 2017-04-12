@@ -38,7 +38,17 @@ $(document).ready(function(){
         clearInterval(playingSound);
       }
     }, 900);
+  };
+
+  function colorPlayerMove(playerClick) {
+     $("#" + playerClick).addClass("active");
+      (function(move) {
+        setTimeout(function() {
+          $("#" + move).removeClass("active");
+        }, 300);
+      })(playerClick);
   }
 
   game.setComputerCallback(playComputerCombination);
+  game.setPlayerCallback(colorPlayerMove);
 })
