@@ -11,7 +11,8 @@ var SimonGame = function() {
   };
   this.isStrict = false;
   this.computerCallback = null;
-  this.playerCallback - null;
+  this.playerCallback = null;
+  this.resultsText = null;
 }
 
 SimonGame.prototype.getCurrentCombination = function() {
@@ -65,6 +66,10 @@ SimonGame.prototype.setPlayerCallback = function(callback) {
   this.playerCallback = callback;
 }
 
+SimonGame.prototype.setResultsText = function(callback) {
+  this.resultsText = callback;
+}
+
 SimonGame.prototype.generateMove = function() {
   this.currentCombination.push(this.buttons[(Math.floor(Math.random() * this.buttons.length))]);
   console.log(this.currentCombination);
@@ -74,13 +79,13 @@ SimonGame.prototype.playerTurn = function(playerClick) {
   this.playerMoves.push(playerClick);
   if (this.playerMoves[this.playerMoves.length - 1] !== this.currentCombination[this.playerMoves.length - 1]) {
     if(this.isStrict){
-      console.log('From the beginning');
       this.clearGame();
       this.generateMove();
       this.computerCallback();
+      this.resultsText('From the beginning');
     } else {
-      console.log('Try again');
       this.computerCallback();
+      this.resultsText('Try again');
       this.clearPlayer();
     }
   } else {
@@ -88,12 +93,12 @@ SimonGame.prototype.playerTurn = function(playerClick) {
     this.playerCallback(playerClick);
     if (this.playerMoves.length === this.currentCombination.length) {
       if(this.count == 20){
-        console.log('You won! Congrats!');
+        this.resultsText('You won! Congrats!');
       } else {
-        console.log('Next round!');
         this.addCount();
         this.generateMove();
         this.computerCallback();
+        this.resultsText('Next round!');
         this.clearPlayer();
       }
     }

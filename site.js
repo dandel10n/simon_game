@@ -38,7 +38,7 @@ $(document).ready(function(){
         clearInterval(playingSound);
       }
     }, 900);
-    $(".resultDisplay").text(game.count);
+    $(".scoreDisplay").text(game.count);
   };
 
   function colorPlayerMove(playerClick) {
@@ -48,8 +48,18 @@ $(document).ready(function(){
           $("#" + move).removeClass("active");
         }, 300);
       })(playerClick);
+  };
+
+  function resultsText(content) {
+    $(".resultDisplay").text(content);
+    (function() {
+        setTimeout(function() {
+         $(".resultDisplay").text(" ");
+        }, 1000);
+      })();
   }
 
   game.setComputerCallback(playComputerCombination);
   game.setPlayerCallback(colorPlayerMove);
+  game.setResultsText(resultsText);
 })
