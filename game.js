@@ -94,6 +94,7 @@ SimonGame.prototype.playerTurn = function(playerClick) {
     if (this.playerMoves.length === this.currentCombination.length) {
       if(this.count == 20){
         this.resultsText('You won! Congrats!');
+        this.clearGame();
       } else {
         this.addCount();
         this.generateMove();

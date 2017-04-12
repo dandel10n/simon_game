@@ -4,6 +4,7 @@ $(document).ready(function(){
   $(".startButton").on("click", function() {
     game.generateMove();
     playComputerCombination();
+    $(".startButton").prop("disabled", true);
   });
 
   $(".strictButton").on("click", function(){
@@ -16,7 +17,7 @@ $(document).ready(function(){
     $(".scoreDisplay").text(game.count);
     game.generateMove();
     playComputerCombination();
-  })
+  });
 
   $(".gameButton").on("click", function(){
     game.playerTurn($(this).data("color"));
@@ -56,10 +57,14 @@ $(document).ready(function(){
   function resultsText(content) {
     $(".resultDisplay").text(content);
     (function() {
-        setTimeout(function() {
-         $(".resultDisplay").text(" ");
-        }, 1000);
-      })();
+      setTimeout(function() {
+       $(".resultDisplay").text(" ");
+      }, 1000);
+     })();
+    if (content === 'You won! Congrats!') {
+      $(".startButton").prop("disabled", false);
+      $(".scoreDisplay").text("1");
+    }
   }
 
   game.setComputerCallback(playComputerCombination);
