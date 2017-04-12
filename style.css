@@ -69,30 +69,53 @@ body {
 }
 
 .gamefield {
-  width: 50%;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
   margin: auto;
 }
 
 .gameButton {
+  position: absolute;
   width: 50px;
   height: 50px;
   border-radius: 50%;
 }
 
+.centered,
+.resultDisplay {
+  display: inline-block;
+}
+
+.resultDisplay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
 #yellow {
   border: 2px solid yellow;
+  left: 40%;
+  bottom: 0;
 }
 
 #red {
   border: 2px solid red;
+  top: 40%;
+  right: 0;
 }
 
 #blue {
   border: 2px solid blue;
+  left: 40%;
+  top: 0;
 }
 
 #green {
   border: 2px solid green;
+  top: 40%;
+  left: 0;
 }
 
 .button {

@@ -21,7 +21,7 @@ SimonGame.prototype.getCurrentCombination = function() {
 SimonGame.prototype.clearGame = function() {
   this.currentCombination = [];
   this.clearPlayer();
-  this.count = 0;
+  this.count = 1;
 }
 
 SimonGame.prototype.clearPlayer = function() {
@@ -31,10 +31,6 @@ SimonGame.prototype.clearPlayer = function() {
 SimonGame.prototype.addCount = function() {
   this.count++;
 };
-
-SimonGame.prototype.nextLevel = function() {
-  this.addCount();
-}
 
 SimonGame.prototype.sound = function(name) {
   switch(name) {
@@ -80,7 +76,6 @@ SimonGame.prototype.playerTurn = function(playerClick) {
     if(this.isStrict){
       console.log('From the beginning');
       this.clearGame();
-      this.addCount();
       this.generateMove();
       this.computerCallback();
     } else {

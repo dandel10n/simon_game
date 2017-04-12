@@ -38,6 +38,7 @@ $(document).ready(function(){
         clearInterval(playingSound);
       }
     }, 900);
+    $(".resultDisplay").text(game.count);
   };
 
   function colorPlayerMove(playerClick) {
