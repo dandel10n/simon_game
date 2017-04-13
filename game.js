@@ -1,13 +1,13 @@
 var SimonGame = function() {
   this.count = 1;
-  this.buttons = ['green', 'blue', 'red', 'yellow'];
+  this.buttons = ['one', 'two', 'three', 'four'];
   this.currentCombination = [];
   this.playerMoves = [];
   this.sounds = {
-    blue: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'),
-    red: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'),
-    yellow: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'),
-    green: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3')
+    one: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'),
+    two: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'),
+    three: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'),
+    four: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3')
   };
   this.isStrict = false;
   this.computerCallback = null;
@@ -35,17 +35,17 @@ SimonGame.prototype.addCount = function() {
 
 SimonGame.prototype.sound = function(name) {
   switch(name) {
-    case 'green':
-      this.sounds.green.play();
+    case 'one':
+      this.sounds.one.play();
       break;
-    case 'blue':
-      this.sounds.blue.play();
+    case 'two':
+      this.sounds.two.play();
       break;
-    case 'red':
-      this.sounds.red.play();
+    case 'three':
+      this.sounds.three.play();
       break;
-    case 'yellow':
-      this.sounds.yellow.play();
+    case 'four':
+      this.sounds.four.play();
       break;
   };
 }

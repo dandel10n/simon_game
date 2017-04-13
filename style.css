@@ -54,6 +54,10 @@ body {
   text-align: center;
   min-height: 100%;
   height: 100%;
+  background-color: #1a181b;
+  color: #fff;
+  font-family: 'Acme', sans-serif;
+  font-size: 18px;
 }
 
 *,
@@ -81,6 +85,8 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  background-color: inherit;
+  outline: none;
 }
 
 .centered,
@@ -103,52 +109,54 @@ body {
   line-height: 25px;
 }
 
-#yellow {
-  border: 2px solid yellow;
+#one {
+  border: 2px solid #564d65;
   left: 40%;
   bottom: 0;
 }
 
-#red {
-  border: 2px solid red;
+#two {
+  border: 2px solid #3e8989;
   top: 40%;
   right: 0;
 }
 
-#blue {
-  border: 2px solid blue;
+#three {
+  border: 2px solid #2cda9d;
   left: 40%;
   top: 0;
 }
 
-#green {
-  border: 2px solid green;
+#four {
+  border: 2px solid #05f140;
   top: 40%;
   left: 0;
 }
 
 .button {
-  cursor: pointer;
   margin: 10px auto;
   width: 60px;
   height: 30px;
   line-height: 30px;
   border: 1px solid black;
-  background-color: inherit;
+  border-radius: 4px;
+  background-color: #fff;
+  outline: none;
+  font-family: 'Acme', sans-serif;
 }
 
-#green.active {
-  background-color: green;
+#four.active {
+  background-color: #05f140;
 }
 
-#blue.active {
-  background-color: blue;
+#three.active {
+  background-color: #2cda9d;
 }
 
-#red.active {
-  background-color: red;
+#two.active {
+  background-color: #3e8989;
 }
 
-#yellow.active {
-  background-color: yellow;
+#one.active {
+  background-color: #564d65;
 }

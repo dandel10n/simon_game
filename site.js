@@ -11,7 +11,7 @@ $(document).ready(function(){
     if (game.isStrict) {
       $(".strictButton").css("background-color", "red");
     } else {
-      $(".strictButton").css("background-color", "inherit");
+      $(".strictButton").css("background-color", "#fff");
     }
   });
 
@@ -23,8 +23,9 @@ $(document).ready(function(){
     var moves = game.getCurrentCombination();
     var i = 0;
 
+    forbidClick();
+
     var playingSound = setInterval(function(){
-      forbidClick();
       game.sound(moves[i]);
 
       $("#" + moves[i]).addClass("active");
@@ -67,20 +68,21 @@ $(document).ready(function(){
       }, 1000);
      })();
     if (content === 'You won! Congrats!') {
-      $(".reset").prop("disabled", false);
       $(".scoreDisplay").text("1");
     }
   }
 
   function forbidClick() {
     $(".gameButton").off("click");
-    $(".reset").prop("disabled", true);
+    $(".reset").off("click");
   };
 
   function allowClick() {
     $(".gameButton").on("click", function(){
-      game.playerTurn($(this).data("color"));
-      $(".reset").prop("disabled", false);
+      game.playerTurn($(this).data("button"));
+    });
+    $(".reset").on("click", function(){
+      startTheGame();
     });
   };
 
