@@ -134,6 +134,7 @@ body {
   height: 30px;
   line-height: 30px;
   border: 1px solid black;
+  background-color: inherit;
 }
 
 #green.active {
