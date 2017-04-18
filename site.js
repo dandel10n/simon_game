@@ -9,7 +9,7 @@ $(document).ready(function(){
   $(".strictButton").on("click", function(){
     game.toggleStrict();
     if (game.isStrict) {
-      $(".strictButton").css("background-color", "red");
+      $(".strictButton").css("background-color", "rgb(255, 88, 88)");
     } else {
       $(".strictButton").css("background-color", "#fff");
     }

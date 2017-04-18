@@ -4,10 +4,10 @@ var SimonGame = function() {
   this.currentCombination = [];
   this.playerMoves = [];
   this.sounds = {
-    one: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'),
-    two: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'),
-    three: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'),
-    four: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3')
+    one: new Audio('simonSound1.mp3'),
+    two: new Audio('simonSound2.mp3'),
+    three: new Audio('simonSound3.mp3'),
+    four: new Audio('simonSound4.mp3')
   };
   this.isStrict = false;
   this.computerCallback = null;
